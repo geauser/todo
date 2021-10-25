@@ -31,7 +31,7 @@
             <p
               v-if="task.desc"
               class="text-xs"
-              :class="`text-gray-${task.completed ? '300' : '500'}`">{{ task.desc }}</p>
+              :class="`${task.completed ? 'text-gray-300' : 'text-gray-500'}`">{{ task.desc }}</p>
           </section>
         </td>
       </tr>
