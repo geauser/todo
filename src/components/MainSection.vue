@@ -17,7 +17,10 @@
 
     <hr class="w-full border-gray-200 mb-5" />
 
-    <task-list :tasks="todoTasks" />
+    <task-list
+      v-if="todoTasks.length > 0"
+      class="mb-6"
+      :tasks="todoTasks" />
 
     <task-form
       v-if="showNewTaskForm"
@@ -26,7 +29,7 @@
       @submit="createNewTask" />
 
     <task-list
-      class="mt-6 mb-10"
+      class="mb-10"
       :tasks="doneTasks" />
 
     <button
