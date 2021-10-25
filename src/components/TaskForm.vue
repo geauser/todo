@@ -13,7 +13,7 @@
 
     <input
       v-model="desc"
-      class="text-xs text-gray-800 outline-none mb-1"
+      class="text-xs text-gray-800 outline-none mb-3"
       type="text"
       placeholder="Description">
 
