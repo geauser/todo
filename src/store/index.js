@@ -89,7 +89,7 @@ export default createStore({
 
     [mut.SET_SEARCH_TERMS](state, terms) {
       state.searchTerms = terms;
-    }
+    },
 
   },
   actions: {
