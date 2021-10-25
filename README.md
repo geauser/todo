@@ -1,24 +1,12 @@
 # todo
 
-## Project setup
+A simple to do app to showcase my Vue.js skills.
+
+## Usage
+
 ```
-yarn install
+yarn install && yarn serve
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The app will then be available at [localhost:8080](http://localhost:8080).
+A live demo is also available at [todo.geauser.com](https://todo.geauser.com).
