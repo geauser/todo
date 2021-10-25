@@ -24,7 +24,7 @@ module.exports = {
     'vue/name-property-casing': ['error', 'kebab-case'],
     'vue/max-attributes-per-line': 'off',
     'comma-dangle': ['error', 'always-multiline'],
-    'semi': [2, 'always'],
+    semi: [2, 'always'],
     'object-shorthand': ['error', 'methods'],
     'no-multi-spaces': 'off',
     'padded-blocks': 'off',
