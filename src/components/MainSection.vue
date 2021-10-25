@@ -25,7 +25,15 @@
       @cancel="showNewTaskForm = false"
       @submit="createNewTask" />
 
-    <task-list :tasks="doneTasks" />
+    <task-list
+      class="mt-6 mb-10"
+      :tasks="doneTasks" />
+
+    <button
+      class="floating-new-task-button"
+      @click="showNewTaskForm = true">
+      <span class="material-icons text-white text-base" aria-hidden="true">add_box</span>
+    </button>
 
   </section>
 
@@ -82,6 +90,19 @@ export default {
       bg-gray-800
       hover:bg-gray-600
       transition-colors;
+  }
+
+  .floating-new-task-button {
+    @apply
+      fixed
+      right-4 bottom-8
+      flex items-center justify-center
+      h-12 w-12
+      visible
+      font-sans text-sm text-white
+      rounded-full
+      bg-gray-800
+      sm:invisible
   }
 
 </style>
