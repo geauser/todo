@@ -8,4 +8,6 @@ export default {
 
   EDIT_TASK: 'EDIT',
 
+  SET_SEARCH_TERMS: 'SET_SEARCH_TERMS',
+
 };

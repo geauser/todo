@@ -1,8 +1,16 @@
 import { createStore } from 'vuex';
-import mut             from './mutations';
+import Fuse from 'fuse.js';
+import mut from './mutations';
+
+function fuseSearch(terms, list) {
+  const fuse = new Fuse(list, { keys: ['title', 'desc'] });
+  return fuse.search(terms).map(s => s.item);
+}
 
 export default createStore({
   state: {
+
+    searchTerms: '',
 
     todoTasks: [
       {
@@ -39,8 +47,19 @@ export default createStore({
      * remember from which list (todo or done) the task comes
      * from or its position inside the list.
      */
-    todoTasks: (state) => state.todoTasks.map((t, i) => ({ ...t, index: i, completed: false })),
-    doneTasks: (state) => state.doneTasks.map((t, i) => ({ ...t, index: i, completed: true })),
+    todoTasks(state) {
+
+      const rawTodoTasks = state.todoTasks.map((t, i) => ({ ...t, index: i, completed: false }));
+
+      if (state.searchTerms.length > 1) return fuseSearch(state.searchTerms, rawTodoTasks);
+      return rawTodoTasks;
+    },
+    doneTasks(state) {
+      const rawDoneTasks = state.doneTasks.map((t, i) => ({ ...t, index: i, completed: true }));
+
+      if (state.searchTerms.length > 1) return fuseSearch(state.searchTerms, rawDoneTasks);
+      return rawDoneTasks;
+    },
 
   },
 
@@ -68,6 +87,10 @@ export default createStore({
       state.todoTasks[index] = task;
     },
 
+    [mut.SET_SEARCH_TERMS](state, terms) {
+      state.searchTerms = terms;
+    }
+
   },
   actions: {
 
@@ -92,6 +115,10 @@ export default createStore({
     deleteTask({ commit }, task) {
       if (task.completed) commit(mut.REMOVE_TASK_FROM_DONE, task.index);
       else commit(mut.REMOVE_TASK_FROM_TODO, task.index);
+    },
+
+    setSearchTerms({ commit }, terms) {
+      commit(mut.SET_SEARCH_TERMS, terms);
     },
 
   },
